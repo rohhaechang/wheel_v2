@@ -6,7 +6,7 @@ import Header from '../components/Header'
 import PathCard from '../components/PathCard'
 import SecondResponse from '../SecondResponse'
 
-function destination({ results }) {
+function Destination({ results }) {
   const router = useRouter()
   return (
     <div>
@@ -22,7 +22,7 @@ function destination({ results }) {
   )
 }
 
-export default destination
+export default Destination
 
 export function getServerSideProps(context) {
   const mockData = true
