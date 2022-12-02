@@ -10,8 +10,11 @@ function SearchResult({ results }) {
   return (
     <div className="flex flex-col items-center m-2 px-10">
       {results.documents?.map((result) => (
-        <div className="flex group items-center justify-between space-x-4 bg-gray-300 my-1 w-full px-5 h-24 rounded-md">
-          <div key={result.id} className="my-2">
+        <div
+          key={result.id}
+          className="flex group items-center justify-between space-x-4 bg-gray-300 my-1 w-full px-5 h-24 rounded-md"
+        >
+          <div className="my-2">
             <p
               onClick={backHome}
               className="text-xl cursor-pointer group-hover:underline"

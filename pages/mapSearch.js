@@ -7,7 +7,7 @@ import Header from '../components/Header'
 import SearchResult from '../components/SearchResult'
 import FirstResponse from '../FirstResponse'
 
-function mapSearch() {
+function MapSearch() {
   const router = useRouter()
   const searchInputRef = useRef(null)
   const [retrivedData, setRetrivedData] = useState(FirstResponse)
@@ -60,4 +60,4 @@ function mapSearch() {
   )
 }
 
-export default mapSearch
+export default MapSearch
