@@ -1,37 +1,27 @@
-import React, { useState, useRef } from 'react'
+import React from 'react'
 import { ArrowLongDownIcon } from '@heroicons/react/24/outline'
 import { useRouter } from 'next/router'
 
 export default function PathCard({ result }) {
-  const [cardState, setCardState] = useState('')
-  const changeState = (id) => {
-    setCardState(id)
-  }
-  const selectedRef = useRef(null)
-
-  const showrec = () => {
-    console.log(selectedRef.current.scrollLeft)
-    console.log(selectedRef.current.scrollWidth)
-    console.log(selectedRef.current.clientWidth)
-    selectedRef.current.scrollBy(100, 0)
-  }
+  // scrollLeft는 전체 스크롤 너비에서 현재 화면 너비를 뺀 값
+  // scrollWidth는 전체 스크롤 너비(숨겨진 것 포함)
+  // clientWidth는 현재 스크롤 너비
 
   const router = useRouter()
-  const pathRouting = (event) => {
-    event.preventDefault()
-    router.push(`/detailPath?term=${cardState}`)
+  const pathRouting = (e, id) => {
+    e.preventDefault()
+    router.push(`/detailPath?term=${id}`)
   }
+
   return (
-    <div ref={selectedRef} className="flex overflow-x-scroll scrollbar-none">
+    <div className="flex overflow-x-scroll scrollbar-none">
       {result.path?.map((way) => (
         <div
           key={way.id}
-          onClick={() => changeState(way.id)}
-          className={`${
-            cardState === way.id && result.path ? 'bg-blue-100' : 'bg-white'
-          } mx-5 mt-3 py-3 border-2 border-blue-300 shadow-md rounded-2xl pl-5 pr-12`}
+          onClick={() => pathRouting(event, way.id)}
+          className={`mx-5 mt-3 py-3 border-2 border-blue-300 shadow-md rounded-2xl pl-5 pr-12`}
         >
-          <div onClick={showrec}>
+          <div>
             <p className="text-sm text-blue-700 font-bold">{way.pathType}</p>
           </div>
           <div className="border-b mb-2 pb-2 whitespace-nowrap">
@@ -42,10 +32,10 @@ export default function PathCard({ result }) {
           <div>
             {way.detail?.map((step, index) => (
               <div key={step.message}>
-                <p className="flex items-center text-lg">
+                <div className="flex items-center text-lg">
                   <p className="w-3 h-3 border-2 bg-cyan-500 rounded-full border-gray-600 mr-3"></p>
                   {step.message}
-                </p>
+                </div>
                 <div className={`flex items-center my-1 -ml-2 `}>
                   {way.detail && index < way.detail.length - 1 ? (
                     <ArrowLongDownIcon className="h-7" />

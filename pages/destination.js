@@ -4,7 +4,7 @@ import Head from 'next/head'
 
 import Header from '../components/Header'
 import PathCard from '../components/PathCard'
-import SecondResponse from '../SecondResponse'
+import ResponseB from '../ResponseB'
 
 function Destination({ results }) {
   const router = useRouter()
@@ -26,7 +26,7 @@ export default Destination
 
 export function getServerSideProps(context) {
   const mockData = true
-  const data = mockData ? SecondResponse : null
+  const data = mockData ? ResponseB : null
   return {
     props: {
       results: data,

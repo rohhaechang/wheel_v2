@@ -5,18 +5,18 @@ import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 
 import Header from '../components/Header'
 import SearchResult from '../components/SearchResult'
-import FirstResponse from '../FirstResponse'
+import ResponseA from '../ResponseA'
 
 function MapSearch() {
   const router = useRouter()
   const searchInputRef = useRef(null)
-  const [retrivedData, setRetrivedData] = useState(FirstResponse)
+  const [retrivedData, setRetrivedData] = useState(ResponseA)
 
   const searchData = async () => {
     const mockData = true
     const query = searchInputRef.current.value
     const response = mockData
-      ? FirstResponse
+      ? ResponseA
       : await fetch(
           `https://dapi.kakao.com/v2/local/search/keyword?query=${query}`,
           {
