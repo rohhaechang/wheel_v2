@@ -13,7 +13,6 @@ export default function PathCard({ result }) {
     console.log(selectedRef.current.scrollLeft)
     console.log(selectedRef.current.scrollWidth)
     console.log(selectedRef.current.clientWidth)
-    console.log(selectedRef.current.offsetWidth)
     selectedRef.current.scrollBy(100, 0)
   }
 
