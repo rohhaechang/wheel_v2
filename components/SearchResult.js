@@ -5,7 +5,22 @@ function SearchResult({ results }) {
   const router = useRouter()
   const backHome = (event) => {
     event.preventDefault()
-    router.push(`/`)
+    if (router.query.de || router.query.ar) {
+      router.push(
+        `/${
+          router.query.term === '출발지'
+            ? '&de=' + router.query.searchBody
+            : '&ar=' + router.query.searchBody
+        }`
+      )
+    }
+    router.push(
+      `/${
+        router.query.term === '출발지'
+          ? '?de=' + router.query.searchBody
+          : '?ar=' + router.query.searchBody
+      }`
+    )
   }
   return (
     <div className="flex flex-col items-center m-2 px-10">
