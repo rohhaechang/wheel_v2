@@ -1,12 +1,19 @@
 import React from 'react'
-import Image from 'next/image'
 import { Bars3Icon, MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 import { useRouter } from 'next/router'
+import { useRecoilState } from 'recoil'
+import { arrAtom, depAtom } from '../atom/SearchAtom'
 
 export default function Header() {
   const router = useRouter()
+  const [arr, setArr] = useRecoilState(arrAtom)
+  const [dep, setDep] = useRecoilState(depAtom)
   const goHome = (event) => {
     event.preventDefault()
+    if (!router.query.term) {
+      setArr('')
+      setDep('')
+    }
     router.push(`/`)
   }
   return (

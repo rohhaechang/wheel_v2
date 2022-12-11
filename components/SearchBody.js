@@ -11,9 +11,9 @@ export default function SearchBody() {
   }
   return (
     <div className="h-25 border-b shadow-sm">
-      <div className="mx-8 mt-3 pt-3 pr-3 pl-3 border-2  border-blue-200 shadow-md">
-        <Search goback="출발지" />
-        <Search goback="도착지" />
+      <div className="mx-8 mt-3 pt-3 pr-3 pl-3 border-2 border-blue-200 shadow-md">
+        <Search depArr="출발지" />
+        <Search depArr="도착지" />
       </div>
       <div
         onClick={search}
